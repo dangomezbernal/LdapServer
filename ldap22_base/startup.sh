@@ -1,6 +1,6 @@
 #! /bin/bash
 
-echo "iniciando al isaac"
+
 rm -rf /var/lib/ldap/*
 rm -rf /etc/ldap/slapd.d/*
 slaptest -f slapd.conf -F /etc/ldap/slapd.d
