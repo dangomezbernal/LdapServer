@@ -33,7 +33,9 @@ El sistema operativo y la versión que queremos usar para el container
 Las LABEL son etiquetas (opcionales) para dar información sobre el container y el autor
 ```
 
-* ### RUN apt-get update // ARG DEBIAN_FRONTEND=noninteractive // RUN apt-get -y install procps iproute2 tree nmap vim iputils-ping slapd ldap-utils
+* ### RUN apt-get update
+* ### ARG DEBIAN_FRONTEND=noninteractive
+* ### RUN apt-get -y install procps iproute2 tree nmap vim iputils-ping slapd ldap-utils
 ```
 RUN sirve para ejecutar comandos. En este caso queremos instalar ciertas utilidades basicas para un servidor ldap dentro del container, asi que se hace un apt-get update y un apt-get install. Con ARG DEBIAN_FRONTED=noninteractive evitamos que en la instalación se requiera una interacción de nuestra parte, como por ejemplo confirmar la instalación
 ```
@@ -112,9 +114,14 @@ Activar el demonio (-d0 es para que haga debug a nivel 0 y se quede en foregroun
 docker build -t dangomezbernal/ldap22:base
 ```
 
+* ### Crear red 2hisx
+```
+docker network create 2hisx
+(esta es la red con la que queremos trabajar en el container)
+```
 * ### Iniciar el container
 ```
-docker run --rm --name ldap.edt.org -h ldap.edt.org -it dangomezbernal/ldap22:base
+docker run --rm --name ldap.edt.org -h ldap.edt.org --network 2hisx -it dangomezbernal/ldap22:base
 ``` 
 ## 4. Comprobar funcionamiento
 
@@ -150,11 +157,10 @@ dn: cn=Marta Mas,ou=usuaris,dc=edt,dc=org
 dn: cn=Jordi Mas,ou=usuaris,dc=edt,dc=org
 
 dn: cn=Admin System,ou=usuaris,dc=edt,dc=org
-
 ```
 * ### Desde fuera
 ```
-ldapsearch -x -LLL -h 172.17.0.2 -b 'dc=edt,dc=org' dn
+ldapsearch -x -LLL -h 172.18.0.2 -b 'dc=edt,dc=org' dn
 ```
 ```
 dn: dc=edt,dc=org
@@ -179,4 +185,7 @@ dn: cn=Jordi Mas,ou=usuaris,dc=edt,dc=org
 
 dn: cn=Admin System,ou=usuaris,dc=edt,dc=org
 
+```
+```
+La ip 172.18.0.2 (ip del container creado) la sacamos haciendo "docker exec ldap.edt.org ip a"
 ```
