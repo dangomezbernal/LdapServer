@@ -12,15 +12,12 @@
 docker build -t dangomezbernal/ldap22:practica .
 ```
 ```
-docker run --rm --name ldap.edt.org -h ldap.edt.org --network 2hisx -p 389:389 -d dangomezbernal/ldap22:practica
+docker run --rm --name ldap.edt.org -h ldap.edt.org --network 2hisx -p 389:389 -d danzzzo/ldap22_server:practica
 ```
 
 * container phpldapadmin
 ```
-docker build -t dangomezbernal/ldap22:phpl .
-```
-```
-docker run --rm --name phpldapadmin.edt.org -h phpldapadmin.edt.org --network 2hisx -p 80:80 -d dangomezbernal/ldap22:phpl
+docker run --rm --name phpldapadmin.edt.org -h phpldapadmin.edt.org --network 2hisx -p 80:80 -d danzzzo/ldap22_server:phpl
 ```
 
 ## 2.Cambios
