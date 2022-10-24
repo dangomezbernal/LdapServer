@@ -20,7 +20,7 @@ docker run --rm --name ldap.edt.org -h ldap.edt.org --network 2hisx -p 389:389 -
 docker build -t dangomezbernal/ldap22:phpl .
 ```
 ```
-docker run --rm --name ldap.edt.org -h ldapadmin.edt.org -network 2hisx -p 80:80 -it dangomezbernal/ldap22:phpl
+docker run --rm --name phpldapadmin.edt.org -h phpldapadmin.edt.org --network 2hisx -p 80:80 -d dangomezbernal/ldap22:phpl
 ```
 
 ## 2.Cambios
