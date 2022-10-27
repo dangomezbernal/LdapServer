@@ -46,7 +46,6 @@ gidNumber: 600
 description: Grup de alumnes
 memberUid: anna
 memberUid: marta
-memberUid: jordi
 
 dn: uid=Pau Pou,ou=usuaris,dc=edt,dc=org
 objectclass: posixAccount
@@ -119,7 +118,6 @@ sn: Mas
 homephone: 555-222-2224
 mail: jordi@edt.org
 description: Watch out for this girl
-ou: Alumnes
 ou: Profes
 uid: jordi
 uidNumber: 5004
@@ -149,10 +147,10 @@ memberUid: user08
 memberUid: user09
 memberUid: user10
 
-dn: cn=wheel,ou=grups,dc=edt,dc=org
+dn: cn=sudoers,ou=grups,dc=edt,dc=org
 objectclass: posixGroup
-cn: wheel
-gidNumber: 10
+cn: sudoers
+gidNumber: 27
 description: Grup de administrador
 memberUid: admin
 
@@ -187,7 +185,7 @@ ou: system
 ou: admin
 uid: admin
 uidNumber: 10
-gidNumber: 10
+gidNumber: 27
 homeDirectory: /tmp/home/admin
 userPassword: {SSHA}4mS0FycWc5bkpW8/a396SGNDTQUlFSX3
 
